@@ -16,7 +16,7 @@ var TodoSchema = new mongoose.Schema({
 }, options);
 
 TodoSchema.post("save", function(todo){
-  pub.publish("todo:save", JSON.stringify(todo.toJSON())) 
+  pub.publish("todo:save", JSON.stringify(todo.toJSON())); 
 });
 
 

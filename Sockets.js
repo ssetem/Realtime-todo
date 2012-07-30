@@ -1,4 +1,4 @@
-var socketio = require("socket.io");
+var socketio     = require("socket.io");
 var RedisFactory = require("./lib/RedisFactory");
 
 
@@ -13,7 +13,7 @@ module.exports = function(app){
     sub.psubscribe("todo:*");
     
     sub.on("pmessage", function(pattern, key, ob){
-      socket.emit(key, ob)    
+      socket.emit(key, ob);    
     });
     
     socket.on("disconnect", function(){

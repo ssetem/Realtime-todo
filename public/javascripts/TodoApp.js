@@ -16,7 +16,7 @@ App.todos = new (Backbone.Collection.extend({
 
 var socket = io.connect('http://localhost:3000');
 socket.on('todo:save', function (data) {
-  t = JSON.parse(data);
+  var t = JSON.parse(data);
   var todo = App.todos.get(t._id);
   if(todo){
     todo.set(t)
@@ -53,14 +53,14 @@ App.NewTodoView = Backbone.View.extend({
   },
   
   initialize:function(){
-    this.input = $(this.el).find("input")
+    this.input = $(this.el).find("input");
   },
 
   
   submit:function(e){
     e.preventDefault();
     
-    var todoText = this.input.val()
+    var todoText = this.input.val();
     if(todoText.length > 0) {
       App.todos.create({title:todoText});
       this.input.val("");
@@ -87,14 +87,14 @@ App.TodoListView = Backbone.View.extend({
   
   add:function(todo){
     var view = new App.TodoView(todo);    
-    $(this.el).prepend(view.render().el)
+    $(this.el).prepend(view.render().el);
   }
   
 });
 
 $(function(){
   
-  new App.TodoListView()
+  new App.TodoListView();
   new App.NewTodoView();
  
   App.todos.fetch();

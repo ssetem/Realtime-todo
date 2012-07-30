@@ -1,4 +1,5 @@
 var Todo = require("./TodoModel")
+
 module.exports = function(app){
   
   
@@ -11,7 +12,7 @@ module.exports = function(app){
   app.get("/api/todos", function(req, res){
     Todo.find({}, function(err, todos){
       if(err) return next(err);
-      res.json(todos)
+      res.json(todos);
     });
   });
 
@@ -19,7 +20,7 @@ module.exports = function(app){
   var saveTodo = function(todo, req, res){
     todo.save(function(err, todo){
       if(err) {
-        return res.json(err, 400)
+        return res.json(err, 400);
       } 
       res.json(todo);
     });    
