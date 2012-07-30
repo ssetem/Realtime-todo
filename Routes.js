@@ -4,7 +4,11 @@ module.exports = function(app){
   
   
   app.get('/', function(req, res, next){
-    res.render('index');
+    Todo.find({}, function(err, todos){
+      if(err) return next(err);
+      res.render('index', {todos:todos});
+    });
+
   });
   
 

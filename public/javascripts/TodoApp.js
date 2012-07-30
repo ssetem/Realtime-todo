@@ -97,6 +97,6 @@ $(function(){
   new App.TodoListView();
   new App.NewTodoView();
  
-  App.todos.fetch();
+  App.todos.reset(window.todoData);
   
 });
